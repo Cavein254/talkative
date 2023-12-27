@@ -5,10 +5,12 @@ const UserSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -16,7 +18,6 @@ const UserSchema = mongoose.Schema(
     },
     pic: {
       type: String,
-      required: true,
       default:
         "https://w7.pngwing.com/pngs/227/909/png-transparent-pokemon-charmander-pokemon-go-pikachu-ash-ketchum-charmander-pokemon-orange-fictional-character-cartoon-thumbnail.png",
     },
