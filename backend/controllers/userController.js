@@ -1,8 +1,9 @@
-const expressAsyncHandler = require("express-async-handler");
+const asyncHandler = require("express-async-handler");
 const User = require("../models/UserModel");
 
-const registerUser = expressAsyncHandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
+
   if (!name || !email || !password) {
     res.status(400);
     throw new Error("Name, email and password cannot be empty");
@@ -29,5 +30,10 @@ const registerUser = expressAsyncHandler(async (req, res) => {
       pic: user.pic,
       email: user.email,
     });
+  } else {
+    res.status(400);
+    throw new Error("Unable to create the user");
   }
 });
+
+module.exports = { registerUser };
