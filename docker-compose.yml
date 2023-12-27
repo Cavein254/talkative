@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: bitnami/mongodb:5.0.23
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db # Persist MongoDB data
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root # Set root username (optional for security)
+      MONGO_INITDB_ROOT_PASSWORD: root # Set root password (optional for security)
+
+volumes:
+  mongo-data:
