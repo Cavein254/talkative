@@ -36,6 +36,13 @@ app.use(
 app.use("/auth", userAuth);
 app.use("/api/user/", userRouter);
 
+app.get("/api/user", (req, res) => {
+  if (!res.user) {
+    res.status(201).json({ msg: "The current user is unauthenticated" });
+  }
+  res.status(201).json({ user: req.user });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(

@@ -7,7 +7,7 @@ const LogOutPage = () => {
   return (
     <div>
       <h1>Logout</h1>
-      <Button onClick={googleAuth} colorScheme="blue">
+      <Button onClick={googleAuth} colorScheme="red">
         LOGOUT
       </Button>
     </div>
