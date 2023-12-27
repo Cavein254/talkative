@@ -12,9 +12,7 @@ passport.use(
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return cb(err, user);
-      });
+      cb(null, profile);
     }
   )
 );
