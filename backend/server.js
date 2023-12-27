@@ -34,11 +34,12 @@ app.use(
 );
 
 app.use("/auth", userAuth);
-app.use("/api/user/", userRouter);
+app.use("/api/user", userRouter);
+app.use("/api/chat", chatRoutes);
 
 app.get("/api/user", (req, res) => {
-  if (!res.user) {
-    res.status(201).json({ msg: "The current user is unauthenticated" });
+  if (!req.user) {
+    res.status(401).json({ msg: "The current user is unauthenticated" });
   }
   res.status(201).json({ user: req.user });
 });

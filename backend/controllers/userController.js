@@ -1,37 +1,17 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/UserModel");
-const generateToken = require("../utils/tokenGenerator");
 
-const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
-
-  if (!name || !email || !password) {
-    res.status(400);
-    throw new Error("Name, email and password cannot be empty");
-  }
-
-  const user = await User.findOne({ email });
-
-  if (user) {
-    res.status(400).json({ Error: "The user already exists" });
-  }
-
-  const newUser = await User.create({
-    name,
-    email,
-    pic,
-    password,
-  });
-
-  if (newUser) {
-    res.status(201).json({
-      id: newUser._id,
-      name: newUser.name,
-      pic: newUser.pic,
-      email: newUser.email,
-      token: generateToken(newUser._id),
-    });
-  }
+const allUsers = asyncHandler(async (req, res) => {
+  const keyword = req.query.search
+    ? {
+        $or: [
+          { name: { $regex: req.query.search, $options: "i" } },
+          { email: { $regex: req.query.search, $options: "i" } },
+        ],
+      }
+    : {};
+  const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+  res.status(201).send(users);
 });
 
-module.exports = { registerUser };
+module.exports = { allUsers };
