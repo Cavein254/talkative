@@ -8,8 +8,8 @@ services:
     volumes:
       - mongo-data:/data/db # Persist MongoDB data
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root # Set root username (optional for security)
-      MONGO_INITDB_ROOT_PASSWORD: root # Set root password (optional for security)
-      MONGO_INITDB_DATABASE: socketapp
+      MONGO_INITDB_DATABASE: "socketapp"
+      MONGO_INITDB_ROOT_USERNAME: "root" # Set root username (optional for security)
+      MONGO_INITDB_ROOT_PASSWORD: "root" # Set root password (optional for security)
 volumes:
   mongo-data:

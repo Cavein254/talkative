@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const colors = require("colors");
 
 const connectDB = async () => {
   try {
@@ -6,9 +7,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`Mongodb connected running on ${conn.connection.host}`);
+    console.log(
+      `Mongodb connected running on ${conn.connection.host}`.cyan.underline
+    );
   } catch (err) {
-    console.err(`Error :${err.message}`);
+    console.error(err.red.underline);
     process.exit();
   }
 };
