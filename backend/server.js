@@ -6,6 +6,7 @@ const passport = require("passport");
 const userRouter = require("./routes/userRoute");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
+const passportAuth = require("./utils/PassportAuth");
 
 dotenv.config();
 
