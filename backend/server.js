@@ -7,6 +7,7 @@ const userRouter = require("./routes/userRoute");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const passportAuth = require("./utils/PassportAuth");
+const userAuth = require("./routes/userAuthRoute");
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(
   })
 );
 
+app.use("/auth", userAuth);
 app.use("/api/user/", userRouter);
 
 const PORT = process.env.PORT || 5000;
