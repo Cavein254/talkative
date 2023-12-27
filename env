@@ -1,1 +1,2 @@
 PORT=5000
+MONGO_URI=mongodb+srv://myDatabaseUser:D1fficultP%40ssw0rd@server.example.com/
