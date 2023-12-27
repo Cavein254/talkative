@@ -5,20 +5,28 @@ const UserSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
     googleId: {
       type: String,
       required: true,
       unique: true,
+      trim: true,
+      index: true,
     },
     userName: {
       type: String,
+      trim: true,
       unique: true,
+      sparse: true,
+      index: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
+      trim: true,
+      index: true,
     },
 
     pic: {
