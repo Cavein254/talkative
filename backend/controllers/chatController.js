@@ -70,6 +70,36 @@ const fetchChats = asyncHandler(async (req, res) => {
   }
 });
 
-const createGroupChat = asyncHandler(async (req, res) => {});
+const createGroupChat = asyncHandler(async (req, res) => {
+  if (!req.body.users || !req.body.name) {
+    res.status(400).send({ message: "please fill all the fields" });
+  }
+  let users = JSON.parse(req.body.users);
 
-module.exports = { accessChats, fetchChats };
+  if (users.length < 2) {
+    res.status(400).json({
+      error: true,
+      message: "A group chat requires more than 2 users",
+    });
+  }
+  users.push(req.user);
+
+  try {
+    const groupChat = await Chat.create({
+      chatName: req.body.name,
+      users: users,
+      isGroupChat: true,
+      groupAdmin: req.user,
+    });
+
+    const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
+      .populate("users", "-password")
+      .populate("groupAdmin", "-password");
+    res.status(200).json(fullGroupChat);
+  } catch (error) {
+    res.status(400);
+    throw new Error(error.message);
+  }
+});
+
+module.exports = { accessChats, fetchChats, createGroupChat };
