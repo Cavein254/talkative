@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="flex-none">
         {/* Toggle button here */}
         <button className="btn btn-square btn-ghost">
-          <label className="swap swap-rotate w-12 h-12">
+          <label className="swap swap-rotate">
             <input
               type="checkbox"
               onChange={handleToggle}
@@ -40,9 +40,9 @@ const Navbar = () => {
               checked={theme === "light" ? false : true}
             />
             {/* light theme sun image */}
-            <FaSun className="w-8 h-8 swap-on text-orange-300" />
+            <FaSun className="w-4 h-4 swap-on text-orange-300" />
             {/* dark theme moon image */}
-            <BsFillMoonStarsFill className="w-8 h-8 swap-off" />
+            <BsFillMoonStarsFill className="w-4 h-4 swap-off" />
           </label>
         </button>
       </div>
