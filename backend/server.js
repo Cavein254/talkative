@@ -8,6 +8,7 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 const passportAuth = require("./utils/PassportAuth");
 const userAuth = require("./routes/userAuthRoute");
+const chatsRouter = require("./routes/chatRoute");
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ app.use(
   cookieSession({
     name: "socketSession",
     keys: ["socketinit"],
-    maxAge: 60 * 60 * 24 * 45,
+    maxAge: 24 * 60 * 60 * 1000 * 45, //45 days
   })
 );
 
