@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import Navbar from "./components/nav/Navbar.tsx";
+import MinorSidebar from "./components/minorsidebar/MinorSidebar.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/nav",
     element: <Navbar />,
+  },
+  {
+    path: "/groups",
+    element: <MinorSidebar />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

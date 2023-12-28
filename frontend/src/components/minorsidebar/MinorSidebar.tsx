@@ -10,7 +10,7 @@ const MinorSidebar = () => {
         className="tab"
         aria-label="New Messages"
       />
-      <div role="tabpanel" className="tab-content p-2">
+      <div role="tabpanel" className="tab-content p-4">
         <MessageProp />
         <MessageProp />
         <MessageProp />
@@ -27,7 +27,7 @@ const MinorSidebar = () => {
         aria-label="My Groups"
         checked
       />
-      <div role="tabpanel" className="tab-content p-2">
+      <div role="tabpanel" className="tab-content p-4">
         <MessageProp />
         <MessageProp />
         <MessageProp />
@@ -39,7 +39,7 @@ const MinorSidebar = () => {
         className="tab"
         aria-label="Groups"
       />
-      <div role="tabpanel" className="tab-content p-2">
+      <div role="tabpanel" className="tab-content p-4">
         <MessageProp />
         <MessageProp />
         <MessageProp />
