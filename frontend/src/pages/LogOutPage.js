@@ -1,5 +1,3 @@
-import { Button } from "@chakra-ui/react";
-
 const LogOutPage = () => {
   const googleAuth = () => {
     window.open(`${process.env.REACT_APP_URL}/auth/logout`, "_self");
@@ -7,9 +5,9 @@ const LogOutPage = () => {
   return (
     <div>
       <h1>Logout</h1>
-      <Button onClick={googleAuth} colorScheme="red">
+      <button onClick={googleAuth} colorScheme="red">
         LOGOUT
-      </Button>
+      </button>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
 
 const LoginPage = () => {
   const googleAuth = () => {
@@ -8,9 +7,9 @@ const LoginPage = () => {
   return (
     <div>
       <h1>Login with Google</h1>
-      <Button onClick={googleAuth} colorScheme="blue">
+      <button onClick={googleAuth} colorScheme="blue">
         Sign in with Google
-      </Button>
+      </button>
     </div>
   );
 };
