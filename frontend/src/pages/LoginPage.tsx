@@ -1,9 +1,12 @@
-import React from "react";
-
 const LoginPage = () => {
   const googleAuth = () => {
-    window.open(`${process.env.REACT_APP_URL}/auth/google/callback`, "_self");
+    window.open(
+      `${import.meta.env.VITE_REACT_APP_URL}/auth/google/callback`,
+      "_self"
+    );
   };
+  console.log(`${import.meta.env.VITE_REACT_APP_URL}/auth/google/callback`);
+
   return (
     <div>
       <h1>Login with Google</h1>

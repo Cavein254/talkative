@@ -1,6 +1,6 @@
 const LogOutPage = () => {
   const googleAuth = () => {
-    window.open(`${process.env.REACT_APP_URL}/auth/logout`, "_self");
+    window.open(`${import.meta.env.VITE_REACT_APP_URL}/auth/logout`, "_self");
   };
   return (
     <div>
