@@ -36,7 +36,7 @@ app.use(
 
 app.use("/auth", userAuth);
 app.use("/api/user", userRouter);
-// app.use("/api/chat", chatRoutes);
+app.use("/api/chat", chatsRouter);
 
 const PORT = process.env.PORT || 5000;
 

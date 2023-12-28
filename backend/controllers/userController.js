@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/UserModel");
 
 const allUsers = asyncHandler(async (req, res) => {
-  console.log(req.user);
+  console.log(req.headers);
   const keyword = req.query.search
     ? {
         $or: [
