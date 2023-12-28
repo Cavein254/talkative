@@ -35,14 +35,7 @@ app.use(
 
 app.use("/auth", userAuth);
 app.use("/api/user", userRouter);
-app.use("/api/chat", chatRoutes);
-
-app.get("/api/user", (req, res) => {
-  if (!req.user) {
-    res.status(401).json({ msg: "The current user is unauthenticated" });
-  }
-  res.status(201).json({ user: req.user });
-});
+// app.use("/api/chat", chatRoutes);
 
 const PORT = process.env.PORT || 5000;
 

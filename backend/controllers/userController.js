@@ -10,6 +10,9 @@ const allUsers = asyncHandler(async (req, res) => {
         ],
       }
     : {};
+  console.log("On all users");
+  console.log(req.headers);
+  console.log(req.user);
   const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
   res.status(201).send(users);
 });
