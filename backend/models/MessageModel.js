@@ -1,10 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 const MessageModel = mongoose.Schema(
   {
     sender: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
     content: {
       type: String,
@@ -12,7 +13,7 @@ const MessageModel = mongoose.Schema(
     },
     chat: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Chat",
+      ref: 'Chat',
     },
   },
   {
@@ -20,6 +21,6 @@ const MessageModel = mongoose.Schema(
   }
 );
 
-const Message = mongoose.Schema("Message", MessageModel);
+const Message = mongoose.Schema('Message', MessageModel);
 
 module.exports = Message;

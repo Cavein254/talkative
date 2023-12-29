@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 const UserSchema = mongoose.Schema(
   {
@@ -32,7 +33,7 @@ const UserSchema = mongoose.Schema(
     pic: {
       type: String,
       default:
-        "https://w7.pngwing.com/pngs/227/909/png-transparent-pokemon-charmander-pokemon-go-pikachu-ash-ketchum-charmander-pokemon-orange-fictional-character-cartoon-thumbnail.png",
+        'https://w7.pngwing.com/pngs/227/909/png-transparent-pokemon-charmander-pokemon-go-pikachu-ash-ketchum-charmander-pokemon-orange-fictional-character-cartoon-thumbnail.png',
     },
   },
   {
@@ -40,6 +41,6 @@ const UserSchema = mongoose.Schema(
   }
 );
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

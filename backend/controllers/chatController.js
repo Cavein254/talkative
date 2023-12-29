@@ -7,12 +7,12 @@ const accessChats = asyncHandler(async (req, res) => {
   if (!userId) {
     res.status(401).json({
       error: true,
-      message: 'Unauthorized',
+      message: 'At least 1 person is required for a chat',
     });
   }
 
-  var isChat = await Chat.find({
-    isGroupChat: false,
+  let isChat = await Chat.find({
+    isGroup: false,
     $and: [
       { users: { $elemMatch: { $eq: req.user._id } } },
       { users: { $elemMatch: { $eq: userId } } },
@@ -29,7 +29,7 @@ const accessChats = asyncHandler(async (req, res) => {
   if (isChat.length > 0) {
     res.send(isChat[0]);
   } else {
-    var chatData = {
+    let chatData = {
       chatName: 'sender',
       isGroupChat: false,
       users: [req.user._id, userId],
@@ -91,7 +91,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
         const groupChat = await Chat.create({
           chatName: req.body.name,
           users: users,
-          isGroupChat: true,
+          isGroup: true,
           groupAdmin: req.user,
         });
         const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
@@ -122,8 +122,8 @@ const renameGroupChat = asyncHandler(async (req, res) => {
     },
     { new: true }
   )
-    .populate('users', '-password')
-    .populate('groupAdmin', '-password');
+    .populate('users')
+    .populate('groupAdmin');
 
   if (!updatedChat) {
     res.status(404);
