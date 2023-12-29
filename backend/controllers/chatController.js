@@ -171,7 +171,7 @@ const leaveGroupChat = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('Chat not Found');
   } else {
-    res.json(removed);
+    res.json({ error: 'false', message: 'successfully Removed from chat' });
   }
 });
 
