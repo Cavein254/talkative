@@ -70,13 +70,11 @@ const fetchChats = asyncHandler(async (req, res) => {
 
 const createGroupChat = asyncHandler(async (req, res) => {
   if (!req.body.users || !req.body.name) {
-    res
-      .status(400)
-      .send({
-        message: 'please fill all the fields `groupname and atleast 2 users`',
-      });
+    res.status(400).send({
+      message: 'please fill all the fields `groupname and atleast 2 users`',
+    });
   }
-  let users = JSON.parse(req.body.users);
+  let users = req.body.users;
 
   if (users.length < 2) {
     res.status(400).json({
@@ -87,16 +85,27 @@ const createGroupChat = asyncHandler(async (req, res) => {
   users.push(req.user);
 
   try {
-    const groupChat = await Chat.create({
-      chatName: req.body.name,
-      users: users,
-      isGroupChat: true,
-      groupAdmin: req.user,
-    });
-
-    const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
-      .populate('users', '-password')
-      .populate('groupAdmin', '-password');
+    const groupExists = await Chat.findOne({ name: req.body.name });
+    if (!groupExists) {
+      try {
+        const groupChat = await Chat.create({
+          chatName: req.body.name,
+          users: users,
+          isGroupChat: true,
+          groupAdmin: req.user,
+        });
+        const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
+          .populate('users')
+          .populate('groupAdmin');
+        res.status(200).json(fullGroupChat);
+      } catch (err) {
+        res.status(400);
+        throw new Error(err.message);
+      }
+    }
+    const fullGroupChat = await Chat.findOne({ _id: groupExists._id })
+      .populate('users')
+      .populate('groupAdmin');
     res.status(200).json(fullGroupChat);
   } catch (error) {
     res.status(400);
