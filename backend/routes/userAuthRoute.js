@@ -2,14 +2,13 @@ const router = require('express').Router();
 const passport = require('passport');
 
 router.get('/login/success', (req, res) => {
-  console.log({ headers: req.headers });
+  console.log(req.session);
   if (req.user) {
-    res.set('Access-Control-Allow-Origin', '*');
-    console.log('The user is found and sent');
     return res.status(200).json({
       error: false,
       message: 'Login Successful',
       user: req.user,
+      cookies: req.headers.cookie,
     });
   } else {
     res.status(403).json({ error: true, message: 'Not Authorized' });
