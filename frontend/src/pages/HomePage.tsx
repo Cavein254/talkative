@@ -6,7 +6,7 @@ import Navbar from '../components/nav/Navbar';
 const HomePage = () => {
   const [user, setuser] = useState();
   useEffect(() => {
-    fetch('http://localhost:5000/auth/login/success', {
+    fetch('http://localhost:5000/api/auth/login/success', {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -23,6 +23,7 @@ const HomePage = () => {
         console.log({ error_occured: err });
       });
   }, []);
+  console.log(user);
   return (
     <div>
       <Navbar />
