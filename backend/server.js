@@ -34,7 +34,7 @@ app.use(
   })
 );
 
-app.use("/auth", userAuth);
+app.use("/api/auth", userAuth);
 app.use("/api/user", userRouter);
 app.use("/api/chat", chatsRouter);
 
