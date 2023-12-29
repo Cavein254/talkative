@@ -8,7 +8,7 @@ const ChatModal = () => {
         className="btn w-[60%]"
         onClick={() => document.getElementById("my_modal_2").showModal()}
       >
-        <div className="flex justify-between items-center w-full text-xl font-bold">
+        <div className="flex justify-between items-center w-full text-lg font-bold dark:hover:bg-purple-400">
           <div className="">
             <FaPlus />
           </div>
