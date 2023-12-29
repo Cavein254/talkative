@@ -2,9 +2,6 @@ const router = require('express').Router();
 const passport = require('passport');
 
 router.get('/login/success', (req, res) => {
-  console.log('*******************************');
-  console.log(req.headers);
-  console.log('*******************************');
   if (req.user) {
     return res.status(200).json({
       error: false,

@@ -13,7 +13,6 @@ export const basePlateApi = createApi({
         headers.set('Accept', 'application/json');
         headers.set('Access-Control-Allow-Credentials', 'true');
         headers.set('Access-Control-Allow-Origin', '*');
-        console.log(pureToken);
         return headers;
       }
       return headers;
