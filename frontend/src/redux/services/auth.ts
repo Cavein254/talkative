@@ -1,15 +1,12 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { basePlateApi } from './baseplate';
 
+export const authApi = basePlateApi.injectEndpoints({
+  endpoints: (build) => ({
+    getAuthUser: build.query<any, void>({
+      query: () => 'auth/login/success',
+    }),
+  }),
+  overrideExisting: false,
+});
 
-export const authApi = createApi({
-    reducerPath:'authApi',
-    baseQuery: fetchBaseQuery({baseUrl:`${import.meta.env.VITE_REACT_APP_URL}/api/auth/`}),
-    endpoints: (builder) => ({
-        getAuthUser: builder.query({
-            query: () => '/login/success'
-        })
-    })
-}) 
-
-
-export const {useGetAuthUserQuery} = authApi;
+export const { useGetAuthUserQuery } = authApi;
